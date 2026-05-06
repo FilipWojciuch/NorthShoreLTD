@@ -1,5 +1,0 @@
-2026-05-06 02:15:58,705 - User: admin - Action: LOGIN_SUCCESS
-2026-05-06 02:18:27,379 - User: warehouse1 - Action: LOGIN_SUCCESS
-2026-05-06 02:18:47,213 - User: driver1 - Action: LOGIN_FAIL
-2026-05-06 02:18:53,896 - User: driver1 - Action: LOGIN_SUCCESS
-2026-05-06 02:19:09,177 - User: shipment1 - Action: LOGIN_SUCCESS
