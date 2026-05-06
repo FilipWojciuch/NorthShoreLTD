@@ -1,4 +1,9 @@
 #Please run this first so that the username and hashed password get created.
+#Once you run this, below are the passwords for each employee level:
+#Admin: user = admin  password = admin123
+#Warehouse staff: user= warehouse1  password = stock123
+#Drivers: user = driver1 password = drive123
+#Shipment staff: user = shipment1 password = ship123
 import sqlite3
 import hashlib
 
@@ -21,7 +26,7 @@ def setup_users():
     users_to_create = [
         ('admin', 'admin123', 'Admin'),
         ('warehouse1', 'stock123', 'Warehouse staff'),
-        ('driver1', 'drive123', 'Drivers'),
+        ('driver1', 'drive123', 'Driver'),
         ('shipment1', 'ship123', 'Shipment staff')
     ]
 
