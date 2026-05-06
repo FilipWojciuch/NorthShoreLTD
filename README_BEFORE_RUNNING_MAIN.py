@@ -9,8 +9,6 @@ def setup_users():
     conn = sqlite3.connect('northshore.db')
     cursor = conn.cursor()
 
-    # --- ADD THIS SECTION TO FIX THE ERROR ---
-    # This creates the table if it doesn't exist so the DELETE command doesn't crash
     cursor.execute('''CREATE TABLE IF NOT EXISTS users (
         user_id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT UNIQUE,
@@ -18,10 +16,8 @@ def setup_users():
         role TEXT
     )''')
 
-    # Clear old users to avoid role conflicts during testing
     cursor.execute("DELETE FROM users")
 
-    # User data: (Username, Password, Role)
     users_to_create = [
         ('admin', 'admin123', 'Admin'),
         ('warehouse1', 'stock123', 'Warehouse staff'),

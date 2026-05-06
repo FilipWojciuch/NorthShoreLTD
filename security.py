@@ -2,7 +2,6 @@ import hashlib
 import logging
 import sqlite3
 
-# This sets up the actual text file where logs are saved
 logging.basicConfig(
     filename='audit_log.txt',
     level=logging.INFO,

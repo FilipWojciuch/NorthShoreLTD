@@ -19,7 +19,6 @@ class NorthshoreGUI:
         database_run()
         self.show_login_screen()
 
-    # --- UI UTILITIES ---
     def clear_window(self):
         for widget in self.root.winfo_children():
             widget.destroy()
@@ -28,7 +27,6 @@ class NorthshoreGUI:
         for widget in self.content_area.winfo_children():
             widget.destroy()
 
-    # --- LOGIN SCREEN ---
     def show_login_screen(self):
         self.clear_window()
         frame = tk.Frame(self.root, padx=30, pady=30)
@@ -55,16 +53,13 @@ class NorthshoreGUI:
         else:
             messagebox.showerror("Error", "Invalid username or password.")
 
-    # --- DASHBOARD LAYOUT (RBAC INTEGRATED) ---
     def show_dashboard(self):
         self.clear_window()
-        # Sidebar Navigation
         self.sidebar = tk.Frame(self.root, width=220, bg="#2c3e50")
         self.sidebar.pack(side="left", fill="y")
 
         tk.Label(self.sidebar, text="LOGISTICS PANEL", fg="white", bg="#2c3e50", pady=20).pack()
 
-        # RBAC Logic: Filter buttons based on user_role
         if self.user_role in ["Admin", "Shipment staff"]:
             tk.Button(self.sidebar, text="📦 View Shipments", command=self.view_shipments,
                       bg="#34495e", fg="white", relief="flat", pady=10, anchor="w", padx=15).pack(fill="x", pady=1)
@@ -91,14 +86,12 @@ class NorthshoreGUI:
 
         tk.Button(self.sidebar, text="🚪 Logout", command=self.show_login_screen).pack(side="bottom", fill="x", pady=10)
 
-        # Dynamic Content Area
         self.content_area = tk.Frame(self.root, bg="#ecf0f1", padx=20, pady=20)
         self.content_area.pack(side="right", expand=True, fill="both")
 
         tk.Label(self.content_area, text=f"System Active: {self.current_user} ({self.user_role})",
                  font=("Arial", 12), bg="#ecf0f1").pack(anchor="ne")
 
-    # --- VIEW COMPONENT (With Sliders/Scrollbars) ---
     def view_table_gui(self, table_name):
         self.clear_content()
         tk.Label(self.content_area, text=f"CURRENT {table_name.upper()} RECORDS",
@@ -131,7 +124,6 @@ class NorthshoreGUI:
     def view_shipments(self):
         self.view_table_gui("shipments")
 
-    # --- SHIPMENT OPERATIONS ---
     def add_shipment_form(self):
         self.clear_content()
         tk.Label(self.content_area, text="Register New Shipment", font=("Arial", 16, "bold"), bg="#ecf0f1").pack(
@@ -187,7 +179,6 @@ class NorthshoreGUI:
 
         tk.Button(self.content_area, text="Update Record", bg="#2980b9", fg="white", command=commit).pack(pady=15)
 
-    # --- SMART INVENTORY & FLEET (Upsert Logic) ---
     def update_inventory_form(self):
         self.clear_content()
         tk.Label(self.content_area, text="Inventory Management", font=("Arial", 16, "bold"), bg="#ecf0f1").pack(pady=10)

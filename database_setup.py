@@ -1,11 +1,9 @@
 import sqlite3
 
 def database_run():
-    """Requirement (a): Develop a centralised database system using SQLite."""
     conn = sqlite3.connect('northshore.db')
     cursor = conn.cursor()
 
-    # Shipments with financial and delivery details
     cursor.execute('''CREATE TABLE IF NOT EXISTS shipments (
         shipment_id TEXT PRIMARY KEY,
         order_number TEXT,
@@ -21,7 +19,6 @@ def database_run():
         payment_status TEXT DEFAULT 'Pending'
     )''')
 
-    # Fleet Management
     cursor.execute('''CREATE TABLE IF NOT EXISTS vehicles (
         vehicle_id TEXT PRIMARY KEY,
         capacity REAL,
@@ -29,7 +26,6 @@ def database_run():
         availability TEXT
     )''')
 
-    # Inventory tracking
     cursor.execute('''CREATE TABLE IF NOT EXISTS inventory (
         item_id INTEGER PRIMARY KEY AUTOINCREMENT,
         warehouse_id TEXT,
@@ -38,7 +34,6 @@ def database_run():
         reorder_level INTEGER
     )''')
 
-    # Users and RBAC
     cursor.execute('''CREATE TABLE IF NOT EXISTS users (
         user_id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT UNIQUE,
