@@ -245,7 +245,7 @@ class NorthshoreGUI:
                  bg="#ecf0f1").pack(pady=10)
         with sqlite3.connect('northshore.db') as conn:
             df = pd.read_sql_query(
-                "SELECT shipment_id, cost, surcharges, (cost+surcharges) as total, status FROM shipments", conn)
+                "SELECT shipment_id, cost, surcharges, (cost+surcharges) as total, payment_status FROM shipments", conn)
 
         tree = ttk.Treeview(self.content_area, columns=list(df.columns), show='headings')
         for col in df.columns: tree.heading(col, text=col.upper())
